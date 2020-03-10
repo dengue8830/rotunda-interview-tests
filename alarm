@@ -1,0 +1,14 @@
+Requirements to send the email:
+
+- errors are logged into a file
+- max 1 email per minute
+- +10 errors in one minute
+
+Solution:
+
+function logError(error) {
+  if ((now - lastEmailSentTimestamp) > 1min && getErrorsFromLastMinute() > 10) {
+    sendMail();
+    lastEmailSentTimestamp = now;
+  }
+}
